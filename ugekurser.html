@@ -30,13 +30,13 @@
                             <div class="dropdown">
                                 <ul>
                                     <li class="dropdown-link">
-                                        <a href="hoejskoleophold.html#moed-eleverne">MØD ELEVER</a>
+                                        <a href="hoejskoleophold.html?id=moed-eleverne">MØD ELEVER</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="hoejskoleophold.html#skema">SKEMA</a>
+                                        <a href="hoejskoleophold.html?id=skema">SKEMA</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="hoejskoleophold.html#fag">FAG<i class="fas fa-caret-down"></i></a>
+                                        <a href="hoejskoleophold.html?id=fag">FAG<i class="fas fa-caret-down"></i></a>
                                         <div class="dropdown second">
                                             <ul>
                                                 <li class="dropdown-link">
@@ -246,7 +246,7 @@
                                         </div>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="hoejskoleophold.html#">REJSER LINJER OG KURSER</a>
+                                        <a href="hoejskoleophold.html?id=rejser-linjer-kurser">REJSER LINJER OG KURSER</a>
                                     </li>
                                 </ul>
                             </div>
@@ -256,16 +256,16 @@
                             <div class="dropdown">
                                 <ul>
                                     <li class="dropdown-link">
-                                        <a href="ugekurser.html">GOLF</a>
+                                        <a href="ugekurser.html#883">GOLF</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="ugekurser.html">DANS</a>
+                                        <a href="ugekurser.html#884">DANS</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="ugekurser.html">FAMILIE</a>
+                                        <a href="ugekurser.html#885">FAMILIE</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="ugekurser.html">HISTORIE</a>
+                                        <a href="ugekurser.html#886">HISTORIE</a>
                                     </li>
                                 </ul>
                             </div>
@@ -275,22 +275,22 @@
                             <div class="dropdown">
                                 <ul>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#priser">PRISER</a>
+                                        <a href="praktisk_info.html?id=priser">PRISER</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#tilmelding">TILMELDING</a>
+                                        <a href="praktisk_info.html?id=tilmelding">TILMELDING</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#faciliteter">FACILITETER</a>
+                                        <a href="praktisk_info.html?id=faciliteter">FACILITETER</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#rundvisning">RUNDVISNING</a>
+                                        <a href="praktisk_info.html?id=rundvisning">RUNDVISNING</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#brochure">BROCHURE</a>
+                                        <a href="praktisk_info.html?id=brochure">BROCHURE</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#covid-19">COVID-19</a>
+                                        <a href="praktisk_info.html?id=covid-19">COVID-19</a>
                                     </li>
                                 </ul>
                             </div>
@@ -300,22 +300,22 @@
                             <div class="dropdown">
                                 <ul>
                                     <li class="dropdown-link">
-                                        <a href="om.html#vaerdigrundlag">VÆRDIGRUNDLAG</a>
+                                        <a href="om.html?id=vaerdigrundlag">VÆRDIGRUNDLAG</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#personale">PERSONALE</a>
+                                        <a href="om.html?id=personale">PERSONALE</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#elevforening">ELEVFORENING</a>
+                                        <a href="om.html?id=elevforening">ELEVFORENING</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#aarsplaner">ÅRSPLANER</a>
+                                        <a href="om.html?id=aarsplaner">ÅRSPLANER</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#job">JOB</a>
+                                        <a href="om.html?id=job">JOB</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#faq">FAQ</a>
+                                        <a href="om.html?id=faq">FAQ</a>
                                     </li>
                                 </ul>
                             </div>
@@ -337,8 +337,6 @@
                 </div>
             </div>
         </div>
-
-
     </header>
 
     <template class="temp">
@@ -419,6 +417,9 @@
         const ugeKurser = "http://creativeworld.dk/kea02/tema09/09.05.03/wordpress/wp-json/wp/v2/pages/745";
         const ugeKurserPods = "http://creativeworld.dk/kea02/tema09/09.05.03/wordpress/wp-json/wp/v2/ugekursuspods?per_page=100";
 
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get("id");
         let ugekurser;
         let ugeKurserPodsGlob;
         document.addEventListener("DOMContentLoaded", hentData);
@@ -426,11 +427,13 @@
 
         async function hentData() {
             const respons = await fetch(ugeKurser);
-            const respons1 = await fetch(ugeKurserPods);
             ugekurser = await respons.json();
+            hentData1();
+        }
+        async function hentData1() {
+            const respons1 = await fetch(ugeKurserPods);
             ugeKurserPodsGlob = await respons1.json();
             vis(ugekurser);
-            console.log('DataHentet')
         }
 
         function vis(ugekurser) {
@@ -438,6 +441,8 @@
             document.querySelector("#ugekurser").innerHTML = ugekurser.content.rendered;
             document.querySelector(".title-page").innerHTML = ugekurser.title.rendered;
             hentUgeKurserPods(ugeKurserPodsGlob);
+            console.log("ID", id)
+            scrollToLocation(id);
         }
 
         function hentUgeKurserPods(ugeKurserPod) {
@@ -449,12 +454,21 @@
                 const klon = temp.cloneNode(true).content;
                 klon.querySelector(".navn-kursus").textContent = ugekursus.title.rendered;
                 klon.querySelector(".beskrivelse").innerHTML = ugekursus.beskrivelse;
-
+                klon.querySelector(".navn-kursus").id = ugekursus.id;
                 container.appendChild(klon);
 
 
 
             })
         }
+
+        function scrollToLocation(id) {
+            document.getElementById(id).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
     </script>
-</body></html>
+</body>
+
+</html>
