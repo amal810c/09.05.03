@@ -8,15 +8,22 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 150px;
+
 }
 
 body {
-    background-color: #A8BF78;
+    background-color: #cedbb3;
 }
 
-main,
-footer {
+main {
     margin: 10vw;
+}
+
+footer {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 5vh;
 }
 
 img {
@@ -44,22 +51,21 @@ h1 {
     font-family: proxima-nova, sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 1.625em;
-    /*26px*/
-    color: #F8F8F8;
+    font-size: 3em;
+    color: #f29f05;
     text-transform: uppercase;
     margin-bottom: 10px;
 }
 
 h2 {
     font-family: proxima-nova, sans-serif;
-    font-weight: 400;
+    font-weight: 700;
     font-style: normal;
-    font-size: 1.5em;
-    /*24px*/
-    color: #F8F8F8;
+    font-size: 2em;
+    color: #84a540;
     text-transform: uppercase;
     margin-bottom: 10px;
+    text-decoration: underline;
 }
 
 h3 {
@@ -68,7 +74,7 @@ h3 {
     font-style: normal;
     font-size: 1.375em;
     /*22px*/
-    color: #F8F8F8;
+    color: #84a540;
     text-transform: uppercase;
     margin-bottom: 10px;
 }
@@ -79,7 +85,7 @@ h4 {
     font-style: normal;
     font-size: 1.25em;
     /*20px*/
-    color: #F8F8F8;
+    color: #84a540;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
@@ -90,7 +96,7 @@ h5 {
     font-style: normal;
     font-size: 1.25em;
     /*18px*/
-    color: #F8F8F8;
+    color: #84a540;
     text-transform: uppercase;
     margin-bottom: 20px;
 }
@@ -102,7 +108,7 @@ p,
     font-style: normal;
     font-size: 1em;
     /*16px*/
-    color: #F8F8F8;
+    color: #000000;
 
     line-height: 1.5em;
 }
@@ -145,18 +151,27 @@ a {
 
 }
 
+ul li a {
+    font-family: proxima-nova, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #f8f8f8;
+}
+
 header {
     position: sticky;
     top: 0;
-    background-color: #A6C078;
+    background: rgb(206, 219, 179);
+    background: linear-gradient(180deg, rgba(206, 219, 179, 1) 0%, rgba(206, 219, 179, 1) 25%, rgba(168, 191, 120, 1) 50%, rgba(168, 191, 120, 1) 75%, rgba(132, 165, 64, 1) 100%);
     width: 100vw;
     z-index: 1000;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .container {
     max-width: 65rem;
     padding: 0 2rem;
-    height: 3rem;
+    height: 6rem;
     margin: 0 auto;
     display: flex;
     position: relative;
@@ -206,9 +221,9 @@ header {
 .nav-link > a {
     /*    line-height: 3rem;*/
     color: #fff;
-    padding: 0 .8rem;
+    padding: 30px .8rem;
     letter-spacing: 1px;
-    font-size: .95rem;
+    font-size: 1.10em;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -260,8 +275,8 @@ header {
 }
 
 .dropdown-link:hover > a {
-    background-color: white;
-    color: #A6C078;
+    background-color: #f29f05;
+    color: #f8f8f8;
 }
 
 .dropdown-link {
@@ -349,10 +364,38 @@ header {
     transform: translateY(0) rotate(45deg);
 }
 
+/***** PRAKTISK INFO *****/
+ol li {
+    font-family: proxima-nova, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1em;
+    color: #000000;
+    line-height: 1.5em;
+}
+
+li {
+
+    font-family: proxima-nova, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1em;
+    color: #000000;
+    line-height: 1.5em;
+}
+
+
 /***** FOOTER *****/
+footer {
+    background: rgb(206, 219, 179);
+    background: linear-gradient(180deg, rgba(206, 219, 179, 1) 0%, rgba(206, 219, 179, 1) 25%, rgba(168, 191, 120, 1) 50%, rgba(168, 191, 120, 1) 75%, rgba(132, 165, 64, 1) 100%);
+    box-shadow: 0px -15px 8px rgba(0, 0, 0, 0.1);
+}
+
 .footer-left,
 .footer-center {
     margin-bottom: 50px;
+
 }
 
 .footer-icons img {
@@ -543,6 +586,7 @@ button {
     font-family: proxima-nova, sans-serif;
     font-weight: 700;
     font-style: normal;
+    color: #f8f8f8;
 
 }
 
@@ -550,7 +594,7 @@ button {
 .person-1,
 .person-2,
 .person-3 {
-    background-color: #F8F8F8;
+    margin-bottom: 50px;
 }
 
 .person-1 {
@@ -565,16 +609,17 @@ button {
 .person-2 p,
 .person-3 p {
     text-align: center;
-    color: #999999;
+    color: #f8f8f8;
     font-size: 2em;
 }
 
 .person-1 img,
 .person-2 img,
 .person-3 img {
-    width: 60%;
+    width: 30%;
     height: auto;
     border-radius: 50%;
+    display: flex;
 }
 
 /* KONTAKT SIDE */
