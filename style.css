@@ -384,6 +384,17 @@ li {
     line-height: 1.5em;
 }
 
+.wp-block-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+wp-block-column {
+    flex-basis: 600px;
+    flex-grow: 1;
+}
+
 
 /***** FOOTER *****/
 footer {
