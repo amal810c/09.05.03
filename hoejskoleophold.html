@@ -257,16 +257,16 @@
                             <div class="dropdown">
                                 <ul>
                                     <li class="dropdown-link">
-                                        <a href="ugekurser.html">GOLF</a>
+                                        <a href="ugekurser.html?id=883">GOLF</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="ugekurser.html">DANS</a>
+                                        <a href="ugekurser.html?id=884">DANS</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="ugekurser.html">FAMILIE</a>
+                                        <a href="ugekurser.html?id=885">FAMILIE</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="ugekurser.html">HISTORIE</a>
+                                        <a href="ugekurser.html?id=886">HISTORIE</a>
                                     </li>
                                 </ul>
                             </div>
@@ -276,22 +276,22 @@
                             <div class="dropdown">
                                 <ul>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#priser">PRISER</a>
+                                        <a href="praktisk_info.html?id=priser">PRISER</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#tilmelding">TILMELDING</a>
+                                        <a href="praktisk_info.html?id=tilmelding">TILMELDING</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#faciliteter">FACILITETER</a>
+                                        <a href="praktisk_info.html?id=faciliteter">FACILITETER</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#rundvisning">RUNDVISNING</a>
+                                        <a href="praktisk_info.html?id=rundvisning">RUNDVISNING</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#brochure">BROCHURE</a>
+                                        <a href="praktisk_info.html?id=brochure">BROCHURE</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="praktisk_info.html#covid-19">COVID-19</a>
+                                        <a href="praktisk_info.html?id=covid-19">COVID-19</a>
                                     </li>
                                 </ul>
                             </div>
@@ -301,22 +301,22 @@
                             <div class="dropdown">
                                 <ul>
                                     <li class="dropdown-link">
-                                        <a href="om.html#vaerdigrundlag">VÆRDIGRUNDLAG</a>
+                                        <a href="om.html?id=vaerdigrundlag">VÆRDIGRUNDLAG</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#personale">PERSONALE</a>
+                                        <a href="om.html?id=personale">PERSONALE</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#elevforening">ELEVFORENING</a>
+                                        <a href="om.html?id=elevforening">ELEVFORENING</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#aarsplaner">ÅRSPLANER</a>
+                                        <a href="om.html?id=aarsplaner">ÅRSPLANER</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#job">JOB</a>
+                                        <a href="om.html?id=job">JOB</a>
                                     </li>
                                     <li class="dropdown-link">
-                                        <a href="om.html#faq">FAQ</a>
+                                        <a href="om.html?id=faq">FAQ</a>
                                     </li>
                                 </ul>
                             </div>
@@ -409,7 +409,7 @@
 
     </footer>
 
-    <script src="script.js"></script>
+    <script></script>
     <script>
         "use strict"
         const hoejskoleophold = "http://creativeworld.dk/kea02/tema09/09.05.03/wordpress/wp-json/wp/v2/pages/616";
@@ -424,12 +424,13 @@
 
         async function hentData() {
             const respons = await fetch(hoejskoleophold);
-            const respons1 = await fetch(fagpods);
             hoejskole = await respons.json();
+            hentData1();
+        }
+        async function hentData1() {
+            const respons1 = await fetch(fagpods);
             fagpodGlob = await respons1.json();
             vis(hoejskole);
-            console.log('DataHentet')
-            console.log(id)
         }
 
         function vis(hoejskole) {
@@ -437,6 +438,8 @@
             document.querySelector("#hoejskoleophold").innerHTML = hoejskole.content.rendered;
             document.querySelector(".title-page").innerHTML = hoejskole.title.rendered;
             hentFagPods();
+            console.log("ID", id)
+            scrollToLocation(id);
         }
 
         function hentFagPods() {
@@ -454,7 +457,7 @@
 
 
             })
-            scrollToLocation(id);
+
         }
 
         function scrollToLocation(id) {
@@ -462,5 +465,8 @@
                 behavior: 'smooth'
             });
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
