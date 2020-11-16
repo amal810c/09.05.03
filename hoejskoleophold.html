@@ -342,6 +342,8 @@
 
     </header>
 
+
+    <!--  Dette er vores template her gør vi brug af JSON, REST API til at indsætte indholdet ind  -->
     <template class="temp">
         <h3></h3>
         <div class="beskrivelse1"></div>
@@ -349,12 +351,11 @@
 
     <main>
         <!-- INTRO -->
+        <!--  Dette er vores main, her ønsker vi at "load" vores højskole indhold ind  -->
         <h1 class="title-page"></h1>
         <section id="hoejskoleophold" class="section-content">
         </section>
 
-        <section class="section-content">
-        </section>
     </main>
 
     <footer class="footer-all">
@@ -412,28 +413,39 @@
 
 
     <script>
+        //      Vi gør brug af "use strict", nemmere at debug ens script samt, er meget striks og husker dig på at lave variabler
         "use strict"
+        //      Her definerer vi de forskellige variabler samt definerer de links som vi skal have indhold fra
         const hoejskoleophold = "http://creativeworld.dk/kea02/tema09/09.05.03/wordpress/wp-json/wp/v2/pages/616";
         const fagpods = "http://creativeworld.dk/kea02/tema09/09.05.03/wordpress/wp-json/wp/v2/fag?per_page=100";
         let hoejskole;
         let fagpodGlob;
 
+
+        //      Vi gør brug af urlParams, som har sammenhæng med det id, så vi kan anchorpoints til hjemmesiden
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get("id");
+        //      Vi fortæller scriptet at den skal load Content og kalde på funktionen hentData
         document.addEventListener("DOMContentLoaded", hentData);
 
-
+        //      Dette er den første function som der bliver kaldt på
+        //      Dette indhenter indholdet fra JSON og derefter kalder på funktionen henData1
         async function hentData() {
             const respons = await fetch(hoejskoleophold);
             hoejskole = await respons.json();
             hentData1();
         }
+
+        //      Dette er repeat fra tidligere
         async function hentData1() {
             const respons1 = await fetch(fagpods);
             fagpodGlob = await respons1.json();
             vis(hoejskole);
         }
 
+        //      Det er vigtigt at højskole indholdet bliver indhentet først før fagene gør, da vi indsætter fagene ind i højskole indholdet
+        //      Her indhenter vi content og title fra JSON og indsætter det under vores tomme section og h3
+        //      Derefter skal scriptet gå ind i kalde på hentFagPods og scrollToLocation
         function vis(hoejskole) {
             console.log(hoejskole)
             document.querySelector("#hoejskoleophold").innerHTML = hoejskole.content.rendered;
@@ -442,7 +454,8 @@
             console.log("ID", id)
             scrollToLocation(id);
         }
-
+        //      Under denne funktion bliver fagene kaldt ind fra JSON, hvor vi indsætter informationen under vores template
+        //      Da der er flere fag kører vi et forEach loop som kører alle fagene fra JSON ind og indsætter den information vi ønsker
         function hentFagPods() {
             let temp = document.querySelector(".temp");
             let container = document.querySelector(".fag-pods");
@@ -460,7 +473,7 @@
             })
 
         }
-
+        //      Hvis man går ind under et link med et achorpoint tager der url'en og tager id'et og laver en scroll function
         function scrollToLocation(id) {
             document.getElementById(id).scrollIntoView({
                 behavior: 'smooth'
